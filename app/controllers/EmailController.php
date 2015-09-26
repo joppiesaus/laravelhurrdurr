@@ -14,25 +14,39 @@ class EmailController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
-    
+
 	public function sendEmail()
 	{
-            $names = [ "Tim", "Tom", "James Bond", "Peter Pan" ];
-            $name = $names[ rand( 0, count( $names ) - 1 )];
-            $data = [
-                "name" => $name
-            ];
-            
-            
-            \Mailgun::send( "emails.hello", $data, function($message)
-            {
-                $message->to(Input::get("email"), "hurr")
-                        ->subject("hi")
-                        ->cc(Input::get("email"));
-                        
-            });
-            
-            return View::make("mailissend", $data );
+		$rules = [
+			'email' => 'required|email',
+		];
+
+		$input = Input::only('email');
+
+		$validator = Validator::make($input, $rules);
+
+		if ($validator->fails())
+		{
+			// Or Redirect::back()->withInput()->withErrors($validator);
+			return View::make("mailisnotsend");
+		}
+
+        $names = [ "Tim", "Tom", "James Bond", "Peter Pan" ];
+        $name = $names[ rand( 0, count( $names ) - 1 )];
+        $data = [
+            "name" => $name
+        ];
+
+
+        \Mailgun::send( "emails.hello", $data, function($message)
+        {
+            $message->to(Input::get("email"), "hurr")
+                    ->subject("hi")
+                    //->cc(Input::get("email"))
+                    ;
+        });
+
+        return View::make("mailissend", $data );
 	}
 
 }
