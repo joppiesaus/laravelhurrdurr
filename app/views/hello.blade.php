@@ -4,22 +4,22 @@
 	<meta charset="UTF-8">
 	<title>sheep</title>
 	<style>
-		div
-        {
-            font-family: "Comic Sans MS";
-            font-size: 8em;
-            color: #f00;
-            text-decoration: underline;
-        }
+
+	.error
+	{
+		color: #f00;
+	}
+
 
 	</style>
 </head>
 <body>
+
 	<h1>{{ trans("emailmessages.welcome") }}</h1>
 
 	@if (count($errors) > 0)
-		<h1>Oh noes there are errors!!1!@</h1>
-		<div class="alert alert-danger">
+		<h1>{{ trans("emailmessages.errors") }}</h1>
+		<div class="error" style="border: 1px solid #f00; background-color: #ede; margin: 20px;">
 			<ul>
 				@foreach ($errors->all() as $error)
 					<li>{{ $error }}</li>
@@ -32,6 +32,8 @@
 
     {{ Form::label("email", "Email Addresssss") }}
     {{ Form::text("email", "foo@bar.com") }}
+	{{ $errors->first("email", "<span class=\"error\">:message</span>") }}
+	<br><br>
     {{ Form::submit("CLIKK!") }}
     {{ Form::close() }}
 </body>
