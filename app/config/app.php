@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => true,
+	'debug' => true, /* the best line of code! */
 
 	/*
 	|--------------------------------------------------------------------------
@@ -191,6 +191,6 @@ return array(
                 'Mailgun'         => 'Bogardo\Mailgun\Facades\Mailgun'
 
 	),
-    
+
 
 );
