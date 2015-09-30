@@ -27,8 +27,7 @@ class EmailController extends BaseController {
 
 		if ($validator->fails())
 		{
-			// Or Redirect::back()->withInput()->withErrors($validator);
-			return View::make("mailisnotsend");
+			return Redirect::back()->withInput()->withErrors($validator);
 		}
 
         $names = [ "Tim", "Tom", "James Bond", "Peter Pan" ];
