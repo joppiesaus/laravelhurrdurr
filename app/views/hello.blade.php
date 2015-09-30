@@ -15,7 +15,7 @@
 	</style>
 </head>
 <body>
-	<h1>i wants email</h1>
+	<h1>{{ trans("emailmessages.welcome") }}</h1>
 
 	@if (count($errors) > 0)
 		<h1>Oh noes there are errors!!1!@</h1>
