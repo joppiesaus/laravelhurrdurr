@@ -13,3 +13,6 @@
 
 Route::get('/mail', "HomeController@showWelcome");
 Route::post('/mail', "EmailController@sendEmail");
+
+Route::get('/excel', 'ExcelController@showDefaultView');
+Route::post('/excel', 'ExcelController@makeSheet');
