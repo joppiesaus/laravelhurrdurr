@@ -16,3 +16,10 @@ Route::post('/mail', "EmailController@sendEmail");
 
 Route::get('/excel', 'ExcelController@showDefaultView');
 Route::post('/excel', 'ExcelController@makeSheet');
+
+Route::get('/dropbox', "DropboxController@authorize");
+
+Route::get('/dropboxauth', 'DropboxController@authorizeReturn');
+Route::get('/dropbox-dashboard', "DropboxController@show");
+Route::post('/dropbox-dashboard-download', "DropboxController@downloadFile");
+Route::post('/dropbox-dashboard-upload', "DropboxController@uploadFile");
