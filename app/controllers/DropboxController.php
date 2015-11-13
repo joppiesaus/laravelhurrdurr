@@ -148,4 +148,11 @@ class DropboxController extends BaseController {
 		#return View::make("dropbox", [ "message" => "Access token: " . Session::get("dropbox-token")]);
 	}
 
+	public function logout()
+	{
+		Session::pull("dropbox-token");
+		Session::pull("dropbox-name");
+		return Redirect::to("dropbox");
+	}
+
 }

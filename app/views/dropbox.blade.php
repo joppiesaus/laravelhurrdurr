@@ -21,8 +21,8 @@
     {{ "<div>" . $message . "</div>" }}
     @endif
 
-	<h1> Welcome, {{ Session::get("dropbox-name") }}!</h1>
-	<p>Your token: <code>{{ Session::get("dropbox-token") }}</code></p>
+	<h1>Welcome, {{ Session::get("dropbox-name") }}!</h1>
+	<p>Your token: <code>{{ Session::get("dropbox-token") }}</code> <a id="#logout" href="dropbox/logout">Forget</a></p>
 
     {{ Form::open(["url" => "dropbox-dashboard-download", "method" => "POST" ] ) }}
 

@@ -18,6 +18,7 @@ Route::get('/excel', 'ExcelController@showDefaultView');
 Route::post('/excel', 'ExcelController@makeSheet');
 
 Route::get('/dropbox', "DropboxController@authorize");
+Route::get('/dropbox/logout', "DropboxController@logout");
 
 Route::get('/dropboxauth', 'DropboxController@authorizeReturn');
 Route::get('/dropbox-dashboard', "DropboxController@show");
